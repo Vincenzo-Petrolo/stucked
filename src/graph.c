@@ -232,19 +232,3 @@ struct dag *read_file(char *filename, struct dictionary *dict) {
 
     return root;
 }
-
-// int main(int argc, char *argv[]) {
-//     struct dag *root = NULL;
-//     struct dag *longest_chain;
-
-//     root = read_file("prova");
-
-//     // traverse_dfs(root, print_node, NULL);
-
-//     longest_path(root, &longest_chain);
-
-//     printf("The longest path is: \n");
-//     traverse_dfs(longest_chain, print_node, NULL);
-
-//     return 0;
-// }

@@ -1,5 +1,11 @@
 # stucked — Worst-Case Stack Analyzer
 
+<!-- Include logo of stucked -->
+<p align="center">
+  <img src="docs/stucked.png" alt="stucked logo" width="220">
+</p>
+
+# Overview
 `stucked` reads a call graph plus one or more *stack map* files (mapping
 function names to stack frame sizes) and reports the **maximum stack usage**
 along a path in the graph. This version adds a friendly command-line
