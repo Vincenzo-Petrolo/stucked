@@ -1,0 +1,59 @@
+\
+.TH STUCKED 1 "August 2025" "stucked 1.0.0" "User Commands"
+.SH NAME
+stucked \- worst\-case stack analyzer
+.SH SYNOPSIS
+.B stucked
+[\-hVvqjp] 
+.I callgraph.txt
+.RI [ stackmap1.txt " ...]"
+.SH DESCRIPTION
+.B stucked
+reads a call graph and one or more stack map files containing
+function\-to\-stack\-size mappings, then computes the worst\-case stack
+usage along a path in the call graph.
+
+By default it prints the maximum stack usage and the function chain
+constituting that worst case.
+.SH OPTIONS
+.TP
+.B \-h, \-\-help
+Show help and exit.
+.TP
+.B \-V, \-\-version
+Show version and exit.
+.TP
+.B \-v, \-\-verbose
+Enable verbose logging to stderr.
+.TP
+.B \-q, \-\-quiet
+Only print the maximum stack usage (as a number).
+.TP
+.B \-j, \-\-json
+Print JSON with both maximum stack usage and the path.
+.TP
+.B \-p, \-\-print\-path
+Print the function chain (default). Has no effect with
+.BR \-q .
+.SH EXIT STATUS
+Returns 0 on success, non\-zero on error.
+.SH EXAMPLES
+Compute the worst case from one graph and two stack maps:
+.PP
+.nf
+.RS
+stucked callgraph.txt stacks_1.txt stacks_2.txt
+.RE
+.fi
+.SH FILES
+The input formats are defined by the project; the call graph should be
+parsable by the internal
+.B read_file()
+routine, and stack maps should include lines of the form
+.I function_name:...:...:STACK
+which are parsed by
+.BR parse_line() .
+.SH AUTHOR
+Written by the original project authors; CLI polish by a helpful assistant.
+.SH SEE ALSO
+.BR make (1)
